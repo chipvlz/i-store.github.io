@@ -44,7 +44,7 @@
 		<div class="container">
 			<div class="row bg-primary text-light py-1">
 				<div class="col-12" v-if="!auth.login">
-					<img class="avatar" src="lock.png"/> <span class="mx-3" @click="signInGoogle" key="Login"> Login to Upload/Update</span>
+					<img class="avatar" src="google.png"/> <span class="mx-3" @click="signInGoogle" key="Login"> Login to Upload/Update</span>
 				</div>
 				<div class="col-12" v-else>
 					<img class="avatar" :src=auth.photoURL /> <span class="mx-3"> {{ auth.name }} </span> <button class="btn btn-sm btn-primary" @click="signOut" key="Logout">Sign Out</button>
