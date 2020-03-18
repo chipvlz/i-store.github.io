@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>iStore</title>
-		<script src="js/polyfill-0.1.42.min.js"></script>
-		<script src="js//my.js"></script>
+		<title>iOS Support</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.42/polyfill.min.js"></script>
+		<script src="js/my.js"></script>
 		<script src="js/libmy.js"></script>
 		<script src="js/vue.min.js"></script>
 		<link rel=stylesheet href="css/all.css"></link>
 		<link rel=stylesheet href="css/bootstrap.min.css"></link>
 		<link rel=stylesheet href="css/limit-line.min.css"></link>
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<meta name="viewport" content="width=device-width" initial-scale="1.0" user-scalable="no"/>
 		<script src="js/vue-carousel-3d.min.js"></script>
 		<script src="js/marked.min.js"></script>
 
@@ -23,8 +23,8 @@
 <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
 
 <script>
-onerror = console.error = console.warn = function (e) {
-   alert([].slice.call(arguments).join(" | "))
+onerror = function (e, f, g, h) {
+   alert([e, f, g, h].join(" | "))
 }
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -204,19 +204,19 @@ onerror = console.error = console.warn = function (e) {
 		<section class="container fixed-bottom bg-light py-1 toolbar" v-if="tabSelect != 'inforApp'">
 			<div class="row">
 				<div class="col-3 text-center line-height-0" @click="switchT('hot')">
-						<img :src="'svg/home' + (tabSelect == 'hot' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'svg/home' + (tabSelect == 'hot' ? '_selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">Home</small>
 				</div>
 				<div class="col-3 text-center line-height-0" @click="switchT('game')" @click.once="load('game')">
-						<img :src="'svg/game' + (tabSelect == 'game' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'svg/game' + (tabSelect == 'game' ? '_selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">Game</small>
 				</div>
 				<div class="col-3 text-center line-height-0" @click="switchT('app')" @click.once="load('app')">
-						<img :src="'svg/app' + (tabSelect == 'app' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'svg/app' + (tabSelect == 'app' ? '_selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">App</small>
 				</div>
 				<div class="col-3 text-center line-height-0" @click="tabSelect = 'search'">
-						<img :src="'svg/search' + (tabSelect == 'search' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'svg/search' + (tabSelect == 'search' ? '_selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">Search</small>
 				</div>
 			</div>
@@ -226,7 +226,7 @@ onerror = console.error = console.warn = function (e) {
 	<!-- template preview -->
 	<template id = "preview-app">
 		<transition-group name="fade-app" tag="div" class="row">
-			<div class="col-12 col-lg-6 col-xl-4 row mt-3 icon-download" v-for="(app, key) in appPreview" :key="equalKey(key)" @click="$root.goto(key, app)">
+			<div class="col-12 col-lg-6 col-xl-4 row mt-3 icon-download fa" v-for="(app, key) in appPreview" :key="equalKey(key)" @click="$root.goto(key, app)">
 
 <!--
 	equalKey function nothing
@@ -259,7 +259,7 @@ onerror = console.error = console.warn = function (e) {
 	:height=120
 	:width="240"
 	v-if="swipers.length">
-	<slide v-for="(slide, i) in swipers" :index="i" :key="slide + i">
+	<slide v-for="(slide, i) in swipers" :index="i" :key="slide">
 	  <img :src=slide style="border-radius: 15px"/>
 	</slide>
 </carousel-3d>
@@ -268,7 +268,7 @@ onerror = console.error = console.warn = function (e) {
 			<transition-group name="fade-app" tag="div" class="row">
 <!-- $root = vue root -->
 				<div class="col-12 mt-3 h5 text-bold" :key="'title'">
-					<img src="svg/hot.svg" /> Top Download
+					<img src="svg/hot.svg" /> Hot
 				</div>
 				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in appsHot" :key="equalKey(key)" @click="$root.goto(key, app)">
 					<img class="img-fluid icon-sm border" :src="app.icon" style="border-radius: 10px"/>
@@ -285,11 +285,11 @@ onerror = console.error = console.warn = function (e) {
 			<!-- button load -->
 			<div class="my-3 row text-primary text-center">
 				<div class="col-12" v-if="isLoaded" @click="$emit('more')">
-					<div>Thêm</div>
-					<img src="svg/more.svg" class="loading" />
+					<div>More</div>
+					<img src="svg/loading.svg" class="loading" />
 				</div>
 				<div class="col-12" v-else>
-					<div>Đang tải...</div>
+					<div>Loading...</div>
 					<img src="https://thumbs.gfycat.com/ExcellentSingleFanworms-small.gif" style="width: 3rem; height: 3rem" />
 				</div>
 			</div>
@@ -314,8 +314,8 @@ body {
 .icon-sm {
 	border-radius: 15px;
 	font-weight: 20px !important;
-	width: 4rem;
-	height: 4rem;
+	width: 52px;
+	height: 52px;
 }
 
 .icon-download::after {
@@ -330,8 +330,8 @@ body {
 	margin: auto;
 	margin-right: 0;
 	-webkit-transform: translateX(-100%);
-		-ms-transform: translateX(-100%);
-			transform: translateX(-100%);
+	    -ms-transform: translateX(-100%);
+	        transform: translateX(-100%);
 	text-align: center;
 	line-height: 40px;
 }
@@ -383,8 +383,8 @@ small {
 
 .fade-app-item {
    -webkit-transition-delay: 0.2s;
-		-o-transition-delay: 0.2s;
-		   transition-delay: 0.2s;
+        -o-transition-delay: 0.2s;
+           transition-delay: 0.2s;
 }
 .fade-app-move {
    -webkit-transition: all .2s ease;
@@ -404,8 +404,8 @@ small {
 
 .bouncy-app-item {
    -webkit-transition-delay: 0.2s;
-		-o-transition-delay: 0.2s;
-		   transition-delay: 0.2s;
+        -o-transition-delay: 0.2s;
+           transition-delay: 0.2s;
 }
 .bouncy-app-move {
    -webkit-transition: all .2s ease;
@@ -423,46 +423,46 @@ small {
 .bouncy-app-enter,
 .bouncy-app-leave-to {
    -webkit-transform: scale(0);
-	   -ms-transform: scale(0);
-		   transform: scale(0);
+       -ms-transform: scale(0);
+           transform: scale(0);
 }
 
 .loading {
 	-webkit-animation: loader 1.2s linear infinite;
-			animation: loader 1.2s linear infinite;
+	        animation: loader 1.2s linear infinite;
 }
 @-webkit-keyframes loader {
 	from {
 		opacity: 0;
 		-webkit-transform: translateY(-50%);
-				transform: translateY(-50%);
+		        transform: translateY(-50%);
 	}
 	50% {
 		 opacity: 1;
 		 -webkit-transform: translateY(0%);
-				 transform: translateY(0%);
+		         transform: translateY(0%);
 	}
 	to {
 		opacity: 0;
 		 -webkit-transform: translateY(50%);
-				 transform: translateY(50%);
+		         transform: translateY(50%);
 	}
 }
 @keyframes loader {
 	from {
 		opacity: 0;
 		-webkit-transform: translateY(-50%);
-				transform: translateY(-50%);
+		        transform: translateY(-50%);
 	}
 	50% {
 		 opacity: 1;
 		 -webkit-transform: translateY(0%);
-				 transform: translateY(0%);
+		         transform: translateY(0%);
 	}
 	to {
 		opacity: 0;
 		 -webkit-transform: translateY(50%);
-				 transform: translateY(50%);
+		         transform: translateY(50%);
 	}
 }
 
@@ -555,8 +555,8 @@ small {
 	margin: auto;
 	right: 1.5em;
 	-webkit-transform: rotate(45deg);
-		-ms-transform: rotate(45deg);
-			transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
 }
 
 .detail-close {
@@ -580,8 +580,8 @@ small {
 .icon-sm {
 	border-radius: 15px;
 	font-weight: 20px !important;
-	width: 4rem;
-	height: 4rem;
+	width: 3rem;
+	height: 3rem;
 }
 
 .icon-download::after {
@@ -596,8 +596,8 @@ small {
 	margin: auto;
 	margin-right: 0;
 	-webkit-transform: translateX(-100%);
-		-ms-transform: translateX(-100%);
-			transform: translateX(-100%);
+	    -ms-transform: translateX(-100%);
+	        transform: translateX(-100%);
 	text-align: center;
 	line-height: 40px;
 }
@@ -648,7 +648,6 @@ small {
 }
 </style>
 <script>
-
 function limitObject (obj, e) {
 	var time = [], _obj = {}, tmp
 	for (var key in obj)
@@ -667,7 +666,6 @@ function limitObject (obj, e) {
 	
 	return _obj
 }
-
 function reverseObject (obj) {
 	var time = [], _obj = {}, tmp
 	for (var key in obj)
@@ -684,7 +682,7 @@ function reverseObject (obj) {
 		}
 	})
 	
-	return obj
+	return _obj
 }
 function eccent (str) {
 	return str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
@@ -702,23 +700,13 @@ function eccent (str) {
 	.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y")
 	.replace(/Đ/g, "D");
 }
-function nosp (str) {
-	return (str + "").replace(/ /g, "")
-}
-my.filter = function (obj, fn) {
-	var _ = {}
-	my.each(obj, function (key) {
-		if (fn.call(obj[key], key, obj[key]) === true)
-			_[key] = obj[key]
-	})
-	return _
-}
+
 
 var database = firebase.database()
 var stateHistory = []
 
-console.error = console.warn = function (e, f, g, h) {
-if (e.toString().indexOf("database") === -1) console.log(e + "")
+onerror = console.error = console.warn = function (e, f, g, h) {
+if (e.toString().indexOf("database") === -1) alert([e, f, g, h].join(" | "))
 }
 
 Vue.component("preview-app", {
@@ -767,10 +755,7 @@ var app = new Vue({
 			keyword: "",
 			keywordHot: [],
 			result: {},
-			allData: {},
-			pageY: 0,
-			appPreview: {},
-			appPreviewCount: 20
+			pageY: 0
 		},
 		inforApp: {
 			app: {},
@@ -853,92 +838,31 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 		
 			this.$refs.inputSearch
 			.blur()
-			new my.promise(function (e) {
-				if (this.isEmptyObject(this.search.allData))
-					database
-					.ref("apps/")
-					.once("value", function (f) {
-this.search.allData = f.val()
-						e.done()
-					}.bind(this))
-				else e.done()
-			})
-			.then(function () {
-				var rsh = new RegExp(eccent(my.strips(nosp(this.search.keyword))), "i")/*
-Vue.set(this.search, "result", my.filter(this.search.allData, (f, e) => {
-return (
-	!!eccent(nosp(e.name))
-	.match(rsh) ||
-	!!eccent(nosp(e.description))
-	.match(rsh) ||
-	typeof e.infor == "object" && Object.values(e.infor).some(f => !!eccent(nosp(f)).match(rsh) )
-)
-})*/
-var data = this.search.allData
-var ls = "name description package size time".split(" ")
 
-//clear data and set value empty
-var _data = {}
-var tmp
-//setup all array in ls
-my.each(ls, function (e) {
-	_data[ ls[e] ] = []
-})
-//searchParams
-my.each(data, function (e, f) {
-	ls.some(function (type) {
+			database.ref("apps/")
+			.orderByChild("name")
+			.startBy(this.search.keyword)
+			.endBy(this.search.keyword)
+			.once("value", function (e) {
+				this.search.result = e.val()
+			}.bind(this))
 
-		if (f[type] === undefined)
-			return false
-		if (type === "package")
-			tmp = ( atob(e).match(rsh) || [""] ).join("").length
-		else tmp = ( (f[type] + "").match(rsh) || [""] ).join("").length
-
-		if (tmp !== 0)
-		 	return _data[type].push({
-				antutu: tmp,
-				key: e
-			}), true
-	})
-	//return false
-})
-
-var dataSearched = []
-
-ls.forEach(function (key) {
-	dataSearched = dataSearched.concat(_data[key].sort(function (a, b) { return b.antutu - a.antutu }))
-})
-
-var obj = {}
-
-my.each(dataSearched, function (f, e) {
-	obj[e.key] = data[e.key]
-})
-
-Vue.set(this.search, "result", obj)
-
-			})
-			.catch(function (e) {
-				console.log(e + "")
-			})
-			.end(this)
-			
 		},
-		isEmptyObject:function(obj){
+		isEmptyObject: function(obj) {
 			if (typeof obj !== "object")
 				return false
 			for (var tmp in obj)
-				return false
-			return true
+				return true
+			return false
 		},
 		back: function () {
 			history.back()
 		},
 		open: function () {
-			window.open.apply(window, arguments)
+		    window.open.apply(window, arguments)
 		},
 		atob: function (e) {
-			return window.atob(e)
+		    return window.atob(e)
 		},
 		goto: function(package, data){
 			if (history.pushState)
@@ -1008,14 +932,13 @@ Vue.set(this.search, "result", obj)
 function updateObject ($obj) {
    var key
    for (key in $obj) {
-	  app[key] = my.$clone($obj[key])
+      app[key] = my.$clone($obj[key])
    }
 }
 
 addEventListener("popstate", function (e) {
    updateObject(stateHistory.pop())
 })
-
 </script>
 	</body>
 </html>
