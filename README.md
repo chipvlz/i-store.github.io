@@ -1,1 +1,1 @@
-# nigga-boy.github.io <<add this to cydia
+# i-store.github.io <<add this to cydia
