@@ -89,6 +89,9 @@ my(window).scroll(function () {
 my(".install").mclick(function () {
    open("app.mobileconfig", "_self")
 })
+my(".web").mclick(function () {
+   open("store/index.html", "_self")
+})
 
 	new Swiper('.swiper-container',{
 	  autoplay: {
