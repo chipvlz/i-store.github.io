@@ -92,7 +92,7 @@
 							<span class="input-group-text">Version</span>
 						</div>
 						<select class="form-control custom-select" ref="select-link">
-							<option v-for="(link, ver) in JSON.parse('{' + decodeURIComponent(atob(inforApp.app.versions)) + '}')"
+							<option v-for="(link, ver) in getJSON(inforApp.app.versions)"
 :value="link"> {{ ver }} </option>
 						</select>
 						<div class="input-group-append">
