@@ -5,7 +5,7 @@
 	<key>ConsentText</key>
 	<dict>
 		<key>default</key>
-		<string>Cảm ơn bạn đã cài đặt ứng dụng iOS Support! Bây giờ bạn có thể mở nó từ màn hình chính của bạn.  Đối với bất kỳ trợ giúp, xin vui lòng liên hệ với chúng tôi trên Facebook/Email (https://www.facebook.com/chunhwa.00 / iossp@hotmail.com).</string>
+		<string>Cảm ơn bạn đã cài đặt ứng dụng iOS Support! Bây giờ bạn có thể mở nó từ màn hình chính của bạn.  Đối với bất kỳ trợ giúp, xin vui lòng liên hệ với chúng tôi trên Twitter (@NguyenThanhDev).</string>
 	</dict>
 	<key>PayloadContent</key>
 	<array><!--
@@ -53,7 +53,7 @@
 		</dict>
 	</array>
 	<key>PayloadDescription</key>
-	<string>Hồ sơ cho ứng dụng iOS Support. Cửa hàng ứng dụng bên thứ ba tốt nhất để cài đặt các ứng dụng phiên bản cũ tuyệt vời trên iDevices/iOS đời cũ của bạn.</string>
+	<string>Hồ sơ cho ứng dụng iOS Support. Cửa hàng ứng dụng bên thứ ba tốt nhất để cài đặt các ứng dụng phiên bản cũ tuyệt vời trên thiết bị iOS của bạn.</string>
 	<key>PayloadDisplayName</key>
 	<string>Shin Box</string>
 	<key>PayloadIdentifier</key>
