@@ -54,20 +54,21 @@ onerror = console.error = console.warn = function (e) {
 			<div class="row mt-3">
 				<div class="col-12">
 
-<div class="input-group search">
+<form class="input-group search">
 	<input class="form-control outline-none"
+		type="text"
 		placeholder="Search"
 		style="border-radius: 20px;"
 		ref="inputSearch"
 		v-model="search.keyword"
 		@keydown.enter="searchPlease">
-	<span hidden class="cancel"
+	<span class="cancel"
 		v-if="search.keyword" 
 		@click="search.keyword = '';
 		$refs.inputSearch.focus()">
 			&times;
 	</span>
-</div>
+</form>
 
 				</div>
 			</div>
