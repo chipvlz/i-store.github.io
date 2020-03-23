@@ -61,7 +61,7 @@ onerror = console.error = console.warn = function (e) {
 		ref="inputSearch"
 		v-model="search.keyword"
 		@keydown.enter="searchPlease">
-	<span hidden="cancel" class="cancel"
+	<span hidden class="cancel"
 		v-if="search.keyword" 
 		@click="search.keyword = '';
 		$refs.inputSearch.focus()">
