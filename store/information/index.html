@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Page Title</title>
+		<title>Information Application</title>
 		<link rel=stylesheet href="style.min.css"></link>
 		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no, minium-scalable=1.0, maximum-scalable=1.0' charset="utf-8"/>
 		<script src="https://nguyenthanh1995.github.io/lib/polyfill-0.1.42.min.js"></script>
@@ -92,7 +92,7 @@
 							<span class="input-group-text">Version</span>
 						</div>
 						<select class="form-control custom-select" ref="select-link">
-							<option v-for="(link, ver) in JSON.parse('{' + decodeURIComponent(atob(inforApp.app.versions)) + '}')"
+							<option v-for="(link, ver) in parseJSON(inforApp.app.versions)"
 :value="link"> {{ ver }} </option>
 						</select>
 						<div class="input-group-append">
