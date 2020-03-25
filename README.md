@@ -1,2 +1,2 @@
 # i-store.github.io
-**Markdown js**
+Website for old iDevices/iOS
