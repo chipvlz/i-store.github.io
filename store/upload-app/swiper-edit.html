@@ -121,7 +121,7 @@ new Vue({
 firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
         },
         save(data, index) {
-			 if (firebase.auth.currentUser == null)
+			 if (firebase.auth().currentUser == null)
 			 	Swal.fire({
 			 	    title: "Lỗi",
 			 	    icon: "error",
