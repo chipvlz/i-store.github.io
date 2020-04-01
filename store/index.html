@@ -235,7 +235,7 @@ onerror = console.error = console.warn = function (e) {
 	:autoplay-hover-pause=true
 	:height=120
 	:width="240"
-	:background-color="'#00000000'"
+	:background="'#00000000'"
 	v-if="swipers.length">
 	<slide v-for="(slide, i) in swipers" :index="i" :key="slide + i">
 	  <img :src=slide style="border-radius: 15px;"/>
