@@ -15,7 +15,10 @@
 <style>
 @media (min-width: 576px){
   .bg-sm-light {
-    background-color: #fff !important;
+    background-color: #f8f9fa !important;
+  }
+  .text-sm-dark {
+    color: #343a40 !important;
   }
 
   .\$320 {
@@ -25,11 +28,7 @@
 </style>
 	</head>
 	<body>
-	
-	<div id = "preloader" class="bg-light">
-		<img src="gif/preloader.gif">
-	</div>
-	
+
 	<div id = "app" class="wow fadeIn animated" hidden>
 		<section>
 			<nav class="navbar navbar-expand-sm navbar-sm fixed-top navbar-dark wow bounceInDown animated mx-lg-5 mx-xl-5 bg-sm-light" data-wow-delay="0.22s">
@@ -61,7 +60,8 @@
 			</nav>
 		</section>
 
-		<section class="container bg-main">
+	<section class="bg-main">
+		<div class="container">
 			<div class="row text-center pb-5 text-light pt-7" id="home">
 				<div class="col-12 mt-5">
 					<img src="appcon.jpg" class="icon-app" style="border-radius: 10px">
@@ -79,7 +79,8 @@
 					<img src="screenshoot/1.png" class="w-100 border-0 $320"/>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
 		<section class="container">
 			<!-- cor false aturs -->
