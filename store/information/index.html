@@ -80,7 +80,7 @@ i-store hiện không tìm thấy ứng dụng này trên cơ sở lưu trữ.
 				</div>
 				<div class="col-12 mt-3">
 					<div class="scroll">
-						<img class="img-fluid screenshoot ml-3 border" v-lazy="url" v-for="url in inforApp.app.screenshoot" :key="inforApp.app.icon + url"/>
+						<img class="img-fluid screenshoot ml-3 border" v-lazy="url" v-img="{ group: 'screenshoot', src: url }" v-for="url in inforApp.app.screenshoot" :key="inforApp.app.icon + url"/>
 					</div>
 				</div>
 			</div>
@@ -131,6 +131,7 @@ i-store hiện không tìm thấy ứng dụng này trên cơ sở lưu trữ.
 		<script src="https://nguyenthanh1995.github.io/lib/libmy.js"></script>
 		<script src="https://nguyenthanh1995.github.io/lib/vue.min.js" async></script>
 		<script src="https://nguyenthanh1995.github.io/lib/vue-lazyload.min.js" async></script>
+		<script src="https://nguyenthanh1995.github.io/lib/v-img.min.js" async></script>
 		<script src="https://nguyenthanh1995.github.io/lib/search.params.min.js" async></script>
 		<link rel=stylesheet href="https://nguyenthanh1995.github.io/lib/limit-line.min.css"></link>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.0/marked.min.js" async></script>
