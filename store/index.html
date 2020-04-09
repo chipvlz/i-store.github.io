@@ -62,9 +62,9 @@ onerror = console.error = console.warn = function (e) {
 	<input class="form-control outline-none"
 		type="text"
 		placeholder="Search"
-		style="border-radius: 20px;"
+		style="border-radius: 5px;"
 		ref="inputSearch"
-		v-model="search.keyword"
+		v-model.trim="search.keyword"
 		@keydown.enter="searchPlease">
 	<span class="cancel"
 		v-if="search.keyword" 
@@ -78,10 +78,19 @@ onerror = console.error = console.warn = function (e) {
 			</div>
 			
 			<!-- key hot -->
-			<div class="row mt-5">
-				<div class="col-12">
-					<span class="keyword-hot-item" v-for="keyword in search.keywordHot"
-@click="searchUseKeywordHot($event.target)"> {{ keyword }} </span>
+			<div class="row mt-3 mb-5">
+				<div class="col-12" v-if="search.history.length">
+					<p class="small"> History Search <span class="float-right" @click="clearHistorySearch" style="font-size: 1rem"> &times; </span> </p>
+					<div class="mx-1 mt-2 d-inline py-1 px-2 text-primary"
+		v-for="(keyword, index) in search.history"
+			@click="searchUseKeywordHot($event.target)"
+		v-if="index <= 5"
+		style="font-size: 14px;"
+		:key="index"
+		:data-value="keyword"> {{ limitKeyword(keyword) }} </div>
+				</div>
+				<div class="col-12 small" v-else>
+					No history search
 				</div>
 			</div>
 			
@@ -133,7 +142,7 @@ onerror = console.error = console.warn = function (e) {
 				</div>
 				<div class="col-12 mt-3">
 					<div class="scroll">
-						<img class="img-fluid screenshoot ml-3 border" :src="url" v-for="url in inforApp.app.screenshoot" :key="inforApp.app.icon + url"/>
+						<img class="img-fluid screenshoot ml-3 border" v-lazy="url" v-for="url in inforApp.app.screenshoot" :key="inforApp.app.icon + url"/>
 					</div>
 				</div>
 			</div>
@@ -155,7 +164,7 @@ onerror = console.error = console.warn = function (e) {
 					You may be interested in
 				</div>
 				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in inforApp.hotTrens" :key="equalKey(key)" @click="$root.goto(key, app)">
-					<img class="img-fluid icon-sm border" :src="app.icon" style="border-radius: 10px"/>
+					<img class="img-fluid icon-sm border" v-lazy="app.icon" style="border-radius: 10px"/>
 					<div class="limit-line-1 small-80 text-bold mt-1">
 						{{ app.name }}
 					</div>
@@ -242,7 +251,7 @@ onerror = console.error = console.warn = function (e) {
 	:background="'#00000000'"
 	v-if="swipers.length">
 	<slide v-for="(slide, i) in swipers" :index="i" :key="slide + i">
-	  <img :src=slide style="border-radius: 15px" width="100%" height="100%" class="py-1" />
+	  <img v-lazy=slide style="border-radius: 15px" width="100%" height="100%" class="py-1" />
 	</slide>
 </carousel-3d>
 				</transition>
@@ -252,8 +261,8 @@ onerror = console.error = console.warn = function (e) {
 				<div class="col-12 mt-3 h6 text-bold" :key="'title'">
 					<img src="svgs/hot.svg" /> Hot
 				</div>
-				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in appsHot" :key="equalKey(key)" @click="$root.goto(key, app)">
-					<img class="img-fluid icon-sm border w-min-3 h-min-3" :src="app.icon" style="border-radius: 10px"/>
+				<div class="col-3 col-sm-3 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in appsHot" :key="equalKey(key)" @click="$root.goto(key, app)">
+					<img class="img-fluid icon-sm border w-min-3 h-min-3" v-lazy="app.icon" style="border-radius: 10px"/>
 					<div class="limit-line-1 small-80 text-bold mt-1">
 						{{ app.name }}
 					</div>
@@ -266,13 +275,16 @@ onerror = console.error = console.warn = function (e) {
 			
 			<!-- button load -->
 			<div class="my-3 row text-primary text-center">
-				<div class="col-12" v-if="isLoaded" @click="$emit('more')">
+				<div class="col-12" v-if="isLoaded === true" @click="$emit('more')">
 					<div>More</div>
 					<img src="svgs/loading.svg" class="loading" />
 				</div>
-				<div class="col-12" v-else>
+				<div class="col-12" v-else-if="isLoaded === false">
 					<div>Loading...</div>
 					<img src="../svgs/loader-2.svg" width="16px" height="16px"/>
+				</div>
+				<div class="col-12" v-else>
+					<div>End</div>
 				</div>
 			</div>
 		</section>
@@ -282,12 +294,13 @@ onerror = console.error = console.warn = function (e) {
 		<script src="https://nguyenthanh1995.github.io/lib/libmy.js" async></script>
 		<script src="https://nguyenthanh1995.github.io/lib/search.params.min.js" async></script>
 		<script src="https://nguyenthanh1995.github.io/lib/vue.min.js" async></script>
+		<script src="https://nguyenthanh1995.github.io/lib/vue-lazyload.min.js" async></script>
 		<link rel=stylesheet href="https://nguyenthanh1995.github.io/lib/limit-line.min.css"></link>
 		<script src="https://nguyenthanh1995.github.io/lib/vue-carousel-3d.min.js" async></script>
 		<script src="https://nguyenthanh1995.github.io/lib/marked.min.js" async></script>
-		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js" async></script>
-		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js" async></script>
-		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js" async></script>
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
 		<script src="script.min.js"></script>
 
 	</body>
