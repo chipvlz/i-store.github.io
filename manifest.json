@@ -1,5 +1,6 @@
 {
     "name": "i-Store",
+    "author": "Nguyen Thanh",
     "icons": [
         {
             "src": "/appcon.jpg",
@@ -12,7 +13,7 @@
             "type": "image/jpg"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#3ba4f4",
+    "background_color": "#3ba4f4",
     "display": "standalone"
 }
